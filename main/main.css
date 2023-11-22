@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-weight: 700;
+}
+
+input:hover {
+    border: 1px solid hsl(172, 67%, 45%);
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}

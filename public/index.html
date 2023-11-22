@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./tailwind.css">
+
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+
+<body class="bg-Lightgrayishcyan md:pt-14">
+  <img src="./images/logo.svg" alt="" class="my-10 md:w-[5%] w-[20%] mx-auto">
+
+  <div
+    class="bg-white md:w-[75%] w-full md:rounded-lg rounded-t-xl p-5 mx-auto flex md:flex-row flex-col items-center justify-between">
+    <div class="py-0 md:px-10 md:w-[50%] w-full p-5">
+      <label for="Bill" class="text-Darkgrayishcyan mt-0">Bill</label>
+      <div class="relative">
+        <p class="absolute left-3 top-2 text-Darkgrayishcyan">$</p>
+        <input type="text" name="" id="inputBill"
+          class="bg-Verylightgrayishcyan p-2 text-right outline-none border-none w-full rounded-md" placeholder="0.00">
+        <p class="text-xs text-red-500 hide" id="errorbill">Bill must not be less than 0</p>
+      </div>
+      <div class="my-10 md:block hidden">
+        <p class="text-Darkgrayishcyan my-1 text-sm">Select Tip %</p>
+        <div class="flex items-center justify-between w-full">
+          <input type="button" id="button" value="5"
+            class="bg-Verydarkcyan py-1 px-6 w-1/3 rounded-md text-white m-1 hover:bg-Strongcyan" onclick="adder(this)">
+          <input type="button" id="button" value="10"
+            class="bg-Verydarkcyan py-1 px-6 w-1/3 rounded-md text-white m-1 hover:bg-Strongcyan" onclick="adder(this)">
+          <input type="button" id="button" value="15"
+            class="bg-Verydarkcyan py-1 px-6 w-1/3 rounded-md text-white m-1 hover:bg-Strongcyan" onclick="adder(this)">
+        </div>
+        <div class="flex items-center justify-start w-full">
+          <input type="button" id="button" value="25"
+            class="bg-Verydarkcyan py-1 px-6 w-1/3 rounded-md text-white m-1 hover:bg-Strongcyan" onclick="adder(this)">
+          <input type="button" id="button" value="50"
+            class="bg-Verydarkcyan py-1 px-6 w-full rounded-md text-white m-1 hover:bg-Strongcyan"
+            onclick="adder(this)">
+          <!-- <input
+            class="bg-Verylightgrayishcyan py-1 px-3 w-1/3 rounded-md text-Verydarkcyan m-1 text-right outline-none"
+            placeholder="Custom"> -->
+        </div>
+      </div>
+      <div class="my-10 md:hidden block">
+        <p class="text-Darkgrayishcyan my-1 text-sm">Select Tip %</p>
+        <div class="flex items-center justify-between w-full">
+          <input type="button" id="button" value="5%"
+            class="bg-Verydarkcyan py-2 px-6 w-1/2 rounded-md text-white m-1 hover:bg-Strongcyan" onclick="adder(this)">
+          <input type="button" id="button" value="10%"
+            class="bg-Verydarkcyan py-2 px-6 w-1/2 rounded-md text-white m-1 hover:bg-Strongcyan" onclick="adder(this)">
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <input type="button" id="button" value="15%"
+            class="bg-Verydarkcyan py-2 px-6 w-1/2 rounded-md text-white m-1 hover:bg-Strongcyan" onclick="adder(this)">
+          <input type="button" id="button" value="25%"
+            class="bg-Verydarkcyan py-2 px-6 w-1/2 rounded-md text-white m-1 hover:bg-Strongcyan" onclick="adder(this)">
+        </div>
+        <div class="flex items-center justify-between w-full">
+          <input type="button" id="button" value="50%"
+            class="bg-Verydarkcyan py-2 px-6 w-full rounded-md text-white m-1 hover:bg-Strongcyan"
+            onclick="adder(this)">
+          <!-- <input type="button" id="button"
+            class="bg-Verylightgrayishcyan py-2 px-3 w-1/2 rounded-md text-Darkgrayishcyan m-1 text-right"
+            placeholder="Custom"> -->
+        </div>
+      </div>
+      <label for="Bill" class="text-Darkgrayishcyan my-1 text-sm">Number of People</label>
+      <div class="relative">
+        <img src="./images/icon-person.svg" alt="" class="absolute left-3 top-3 text-Darkgrayishcyan">
+        <input type="text" name="" id="people"
+          class="bg-Verylightgrayishcyan p-2 text-right outline-none border-none w-full rounded-md" placeholder="0">
+        <p class="text-xs text-red-500 hide" id="errorpeople">Can't be 0</p>
+      </div>
+    </div>
+    <div class="bg-Verydarkcyan md:w-[50%] rounded-md md:p-10 p-5 w-full md:mt-0 mt-10">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-white m-1">Tip Amount</p>
+          <p class="text-Darkgrayishcyan">/ person</p>
+        </div>
+        <div>
+          <p class="text-[34px] text-Strongcyan" id="tipPer">$0.00</p>
+        </div>
+      </div>
+      <div class="flex items-center justify-between my-7">
+        <div>
+          <p class="text-white m-1">Total</p>
+          <p class="text-Darkgrayishcyan">/ person</p>
+        </div>
+        <div>
+          <p class="text-[34px] text-Strongcyan" id="totalPerPerson">$0.00</p>
+        </div>
+      </div>
+      <input type="button" value="RESET" id="reset"
+        class="bg-Darkgrayishcyan hover:bg-Strongcyan rounded-md p-2 w-full mx-auto text-Verydarkcyan md:mt-16 mt-5 text-center ">
+    </div>
+  </div>
+  <script src="./tip.js"></script>
+</body>
+
+</html>
